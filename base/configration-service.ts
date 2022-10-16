@@ -30,6 +30,8 @@ export class GlobalConfigration {
     accessTokenKey = ""
     /* JWT Refresh Token Sign Key */
     refreshTokenKey = ""
+    kerzzPublicApiKey = ""
+    contractServiceApiKey = ""
 }
 
 export function saveSampleConfig() {
