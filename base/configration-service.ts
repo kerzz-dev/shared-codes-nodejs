@@ -32,6 +32,19 @@ export class GlobalConfigration {
     refreshTokenKey = ""
     kerzzPublicApiKey = ""
     contractServiceApiKey = ""
+    sqlServerConf = { //Ecr Sql server baglanti bilgileri
+        user: 'sa',
+        password: 'pass',
+        server: '127.0.0.1',
+        database: 'master',
+        options: {
+            encrypt: false,
+            rowCollectionOnRequestCompletion: false //ram kullanimini azaltmak
+        },
+        pool: {
+            idleTimeoutMillis: 5000
+        }
+    }
 }
 
 export function saveSampleConfig() {

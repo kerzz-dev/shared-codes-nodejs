@@ -24,10 +24,12 @@
   "dependencies": {
     "moment": "^2.29.4",
     "mongodb": "^4.10.0",
+    "mssql": "^9.0.1",
     "node-fetch": "^2.6.7",
     "to-json-schema": "^0.2.5"
   },
   "devDependencies": {
+    "@types/mssql": "^8.1.1",
     "@types/node": "^14.18.29",
     "@types/node-fetch": "^2.6.2",
     "@types/to-json-schema": "^0.2.1",
