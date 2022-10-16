@@ -1,0 +1,35 @@
+{
+  "name": "shared-codes-nodejs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "clean": "rimraf dist",
+    "build": "tsc",
+    "watch:build": "tsc --watch",
+    "watch:server": "nodemon './dist/index.js' --watch './dist'",
+    "start": "npm-run-all clean build --parallel watch:build watch:server --print-label"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kerzz-dev/shared-codes-nodejs.git"
+  },
+  "author": "Ali Yilmaz",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kerzz-dev/shared-codes-nodejs/issues"
+  },
+  "homepage": "https://github.com/kerzz-dev/shared-codes-nodejs#readme",
+  "dependencies": {
+    "moment": "^2.29.4",
+    "node-fetch": "^2.6.7",
+    "to-json-schema": "^0.2.5"
+  },
+  "devDependencies": {
+    "@types/node": "^17.0.45",
+    "@types/node-fetch": "^2.6.2",
+    "@types/to-json-schema": "^0.2.1",
+    "typescript": "^4.8.4"
+  }
+}

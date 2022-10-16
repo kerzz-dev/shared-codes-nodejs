@@ -1,0 +1,10 @@
+# Build and Release Folders
+out
+node_modules
+
+# Configration Files
+service-config.json
+certs
+
+# Mac OS Files
+.DS_Store
