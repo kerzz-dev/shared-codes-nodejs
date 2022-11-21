@@ -6,6 +6,11 @@ export async function post(url: string, body: any, headers: any) {
 
 }
 
+export async function put(url: string, body: any, headers: any) {
+    return await baseAction("PUT", url, body, headers)
+
+}
+
 export async function get(url: string, headers: any) {
     return await baseAction("GET", url, undefined, headers)
 }
