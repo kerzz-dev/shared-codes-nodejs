@@ -31,7 +31,6 @@ export async function postFromUrlencoded(url: string, body: any, headers: any) {
 }
 
 export async function baseAction(method: string, url: string, body: any | undefined, headers: { [key: string]: string }) {
-   
     //content-type control
     if (headers) {
         if (!headers["Content-Type"]) {
@@ -52,8 +51,12 @@ export async function baseAction(method: string, url: string, body: any | undefi
     let textData = ""
     try {
         textData = await result.text()
-        let jSonData = JSON.parse(textData)
-        return jSonData
+        if (textData) {
+            let jSonData = JSON.parse(textData)
+            return jSonData
+        } else {
+            return undefined
+        }
     } catch (error: any) {
         logger.error("url:" + url)
         logger.error("data:" + body)
