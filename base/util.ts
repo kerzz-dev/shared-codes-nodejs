@@ -229,3 +229,37 @@ export function changeDateISOFormat(objectData: any) {
     });
     //console.log(deneme)
 }
+
+
+
+export function getCurrencySymbol(currencyCode: string,) {
+    let curSymbol = ""
+    switch (currencyCode) {
+        case "tl":
+            curSymbol = "₺"
+            break
+        case "usd":
+            curSymbol = "$"
+            break
+        case "EUR":
+            curSymbol = "€"
+            break
+    }
+    return curSymbol
+
+}
+
+export function getCurrencyFormat(currency: string, amount: number) {
+    currency = currency.toUpperCase()
+    if (currency == "TL") {
+        currency = "TRY"
+    }
+    return new Intl.NumberFormat('tr-TR', { style: 'currency', currency: currency }).format(amount)
+}
+
+
+export function setDateFormatDMY(value: string) {
+    moment.locale("tr")
+    return moment(value).format("DD.MM.YYYY");
+}
+
