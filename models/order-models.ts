@@ -35,12 +35,16 @@ export class BaseOrder {
     deliveryPaymentType: string
     deliveryAddress: string
     deliveryStaff: string
+    location: undefined | GeoLocation
     note: string
     plasticCutlery: boolean
     appName: string
     verifyId: string
     isRating: boolean
     staffId: string
+    brand: string
+    routingStartTime: undefined | Date
+    routingEndTime: undefined | Date
     getDiscountTotal(): number {
         return this.rows
             .filter(val => val.rowType == "discount" && val.recordStatus != "deleted")
@@ -77,7 +81,7 @@ export class BaseOrder {
         this.kickback = 0
         this.inoviceAddressId = ""
         this.deliveryAddressId = ""
-        this.deliveryStatus = "accpeted"
+        this.deliveryStatus = "accepted"
         this.deliveryPaymentType = ""
         this.deliveryAddress = ""
         this.deliveryStaff = ""
@@ -88,6 +92,9 @@ export class BaseOrder {
         this.verifyId = ""
         this.isRating = false
         this.staffId = ""
+        this.brand = ""
+        this.routingStartTime = new Date()
+        this.routingEndTime = new Date()
     }
 }
 
@@ -129,6 +136,8 @@ export class BaseOrderRow {
     payRowID: string
     source: FolioSources
     couponCode: string
+    printer: string
+    printed: boolean
     getRowTotal() {
         return this.unitPrice * this.qty
     }
@@ -169,6 +178,8 @@ export class BaseOrderRow {
         this.payRowID = ""
         this.source = "orwi"
         this.couponCode = ""
+        this.printed = false
+        this.printer = ""
     }
 }
 
@@ -240,6 +251,16 @@ export class DeleterInfo {
     }
 }
 
+
+export class GeoLocation {
+    lat: number
+    lng: number
+    constructor(lat: number, lng: number) {
+        this.lat = lat
+        this.lng = lng
+    }
+}
+
 export class OrwiInfo {
     spent: number
     won: number
@@ -255,7 +276,7 @@ export type RecordStatus = "new" | "old" | "deleted" | "all"
 export type RowType = "product" | "modifier" | "custom-modifier" | "discount" | "payment" | "promotions" | "bonus"
 export type FolioStatus = "open" | "closed" | "cancelled"
 export type FolioSources = "orwi" | "loyalty-qr" | "web" | "pos" | "food-app"
-export type DeliveryStatus = "none" | "new" | "rejected" | "accpeted" | "preparing" | "routing" | "cancelled" | "completed"
+export type DeliveryStatus = "none" | "new" | "rejected" | "accepted" | "preparing" | "routing" | "cancelled" | "completed"
 
 import * as util from "../base/util"
 export function getOrderSchema() {
@@ -263,5 +284,20 @@ export function getOrderSchema() {
     let row = new BaseOrderRow()
     item.rows.push(row)
     let schema = util.convertJsonSchema(item, "OrderSchema", "Order")
+    return schema
+}
+
+
+export class SaveOrderRequest {
+    order = new BaseOrder()
+    accountId = ""
+}
+
+export function getSaveOrderSchema() {
+    let item = new SaveOrderRequest()
+
+    let row = new BaseOrderRow()
+    item.order.rows.push(row)
+    let schema = util.convertJsonSchema(item, "SaveOrderSchema", "Save Order Schema")
     return schema
 }

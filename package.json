@@ -26,6 +26,7 @@
     "mongodb": "^4.10.0",
     "mssql": "^9.0.1",
     "node-fetch": "^2.6.7",
+    "socket.io-client": "^4.5.4",
     "to-json-schema": "^0.2.5"
   },
   "devDependencies": {
