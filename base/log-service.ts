@@ -1,4 +1,3 @@
-
 import { Console } from "console"
 import moment from "moment"
 import util from "util"
@@ -12,7 +11,7 @@ class Logger extends Console {
     }
 
     trace(...args: any[]) {
-        super.trace(colours.fg.cyan, "TRACE  " + moment().format('D-M-YY HH:mm:ss.SSS'), colours.fg.cyan + '-', util.format(...args))
+        super.log(colours.fg.cyan, "TRACE  " + moment().format('D-M-YY HH:mm:ss.SSS'), colours.fg.cyan + '-', util.format(...args))
     }
     warn(...args: any[]) {
         super.warn(colours.fg.yellow, "WARN  ", moment().format('D-M-YY HH:mm:ss.SSS'), colours.fg.cyan + '-', util.format(...args))

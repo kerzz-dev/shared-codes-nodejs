@@ -1,17 +1,17 @@
 
-declare module NodeJS {
-    interface Global {
-        /** Main Mongo Client Connection */
-        mongoDbCon: any
+declare global {
+    /** Main Mongo Client Connection */
+    var mongoDbCon: any
 
-        /** Global Configs */
-        globalConfigrations: any
+    /** Global Configs */
+    var globalConfigrations: any
 
-        /** Service Api Key List */
-        apiKeys: Array<any>
+    /** Service Api Key List */
+    var apiKeys: Array<any>
 
-        /** Custom Error Codes List With All Languages */
-        customErrorList: Array<{ id: string, langCode: string, text: string }>
+    /** Custom Error Codes List With All Languages */
+    var customErrorList: Array<{ id: string, langCode: string, text: string }>
 
-    }
 }
+
+export { }
