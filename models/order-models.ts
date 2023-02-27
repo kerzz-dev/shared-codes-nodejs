@@ -45,6 +45,8 @@ export class BaseOrder {
     brand: string
     routingStartTime: undefined | Date
     routingEndTime: undefined | Date
+    sequenceNo: number
+    eftPos: boolean
     getDiscountTotal(): number {
         return this.rows
             .filter(val => val.rowType == "discount" && val.recordStatus != "deleted")
@@ -95,6 +97,8 @@ export class BaseOrder {
         this.brand = ""
         this.routingStartTime = new Date()
         this.routingEndTime = new Date()
+        this.sequenceNo = 0
+        this.eftPos = false
     }
 }
 
@@ -138,6 +142,7 @@ export class BaseOrderRow {
     couponCode: string
     printer: string
     printed: boolean
+    tax: number
     getRowTotal() {
         return this.unitPrice * this.qty
     }
@@ -180,6 +185,7 @@ export class BaseOrderRow {
         this.couponCode = ""
         this.printed = false
         this.printer = ""
+        this.tax = 0
     }
 }
 
